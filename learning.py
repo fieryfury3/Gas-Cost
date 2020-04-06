@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-vehicle_df = pd.read_csv("https://www.fueleconomy.gov/feg/epadata/vehicles.csv.zip")
+vehicle_df = pd.read_csv("https://www.fueleconomy.gov/feg/epadata/vehicles.csv.zip", low_memory=False)
 vehicle_df = vehicle_df[["city08","comb08","fuelType","highway08","make", "model", "year"]]
 vehicle_df["model"] = vehicle_df['model'].str.lower()
 vehicle_df["model"] = vehicle_df['model'].str.replace(' ','')
@@ -63,7 +63,4 @@ print("Gallons of gas needed: " + str(gallons_needed))
 print("Calculated cost of gas for trip: $" + str(cost))
 
 
-#Ideas : Could add stops needed to refill based on gas tank size of selected vehicle, average price of gas for all states traveled through to get a better average price that w
-
-
-
+#Ideas : Could add stops needed to refill based on gas tank size of selected vehicle, average price of gas for all states traveled through to get a better average price.
